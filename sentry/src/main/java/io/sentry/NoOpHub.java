@@ -2,6 +2,7 @@ package io.sentry;
 
 import io.sentry.protocol.SentryId;
 import io.sentry.protocol.User;
+
 import java.util.List;
 import org.jetbrains.annotations.Nullable;
 
@@ -39,6 +40,9 @@ final class NoOpHub implements IHub {
   public SentryId captureException(Throwable throwable, @Nullable Object hint) {
     return SentryId.EMPTY_ID;
   }
+
+  @Override
+  public void captureUserFeedback(UserFeedback userFeedback) { }
 
   @Override
   public void startSession() {}

@@ -2,6 +2,7 @@ package io.sentry;
 
 import io.sentry.protocol.Message;
 import io.sentry.protocol.SentryId;
+
 import org.jetbrains.annotations.Nullable;
 
 /** Sentry Client interface */
@@ -140,6 +141,13 @@ public interface ISentryClient {
   default SentryId captureException(Throwable throwable, @Nullable Scope scope) {
     return captureException(throwable, scope, null);
   }
+
+  /**
+   * Captures a manually created user feedback and sends it to Sentry.
+   *
+   * @param userFeedback The user feedback to send to Sentry.
+   */
+  void captureUserFeedback(UserFeedback userFeedback);
 
   /**
    * Captures a session. This method transform a session to an envelope and forwards to

@@ -4,6 +4,7 @@ import io.sentry.cache.EnvelopeCache;
 import io.sentry.config.PropertiesProviderFactory;
 import io.sentry.protocol.SentryId;
 import io.sentry.protocol.User;
+
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -291,6 +292,15 @@ public final class Sentry {
   public static @NotNull SentryId captureException(
       final @NotNull Throwable throwable, final @Nullable Object hint) {
     return getCurrentHub().captureException(throwable, hint);
+  }
+
+  /**
+   * Captures a manually created user feedback and sends it to Sentry.
+   *
+   * @param userFeedback The user feedback to send to Sentry.
+   */
+  public static void captureUserFeedback(UserFeedback userFeedback) {
+    getCurrentHub().captureUserFeedback(userFeedback);
   }
 
   /**

@@ -6,8 +6,12 @@ import java.io.Reader;
 import java.io.Writer;
 import java.util.Map;
 
+import io.sentry.protocol.User;
+
 public interface ISerializer {
   SentryEvent deserializeEvent(Reader reader);
+
+  UserFeedback deserializeUserFeedback(Reader reader);
 
   Session deserializeSession(Reader reader);
 
@@ -16,6 +20,8 @@ public interface ISerializer {
   void serialize(SentryEvent event, Writer writer) throws IOException;
 
   void serialize(Session session, Writer writer) throws IOException;
+
+  void serialize(UserFeedback userFeedback, Writer writer) throws IOException;
 
   void serialize(SentryEnvelope envelope, Writer writer) throws Exception;
 

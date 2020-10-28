@@ -1,6 +1,7 @@
 package io.sentry;
 
 import io.sentry.protocol.SentryId;
+
 import org.jetbrains.annotations.Nullable;
 
 final class NoOpSentryClient implements ISentryClient {
@@ -28,6 +29,9 @@ final class NoOpSentryClient implements ISentryClient {
 
   @Override
   public void flush(long timeoutMillis) {}
+
+  @Override
+  public void captureUserFeedback(UserFeedback userFeedback) { }
 
   @Override
   public void captureSession(Session session, @Nullable Object hint) {}

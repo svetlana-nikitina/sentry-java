@@ -2,6 +2,7 @@ package io.sentry;
 
 import io.sentry.protocol.SentryId;
 import io.sentry.protocol.User;
+
 import java.util.List;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
@@ -40,6 +41,11 @@ public final class HubAdapter implements IHub {
   @Override
   public SentryId captureException(Throwable throwable, @Nullable Object hint) {
     return Sentry.captureException(throwable, hint);
+  }
+
+  @Override
+  public void captureUserFeedback(UserFeedback userFeedback) {
+    Sentry.captureUserFeedback(userFeedback);
   }
 
   @Override
